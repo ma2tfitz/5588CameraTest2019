@@ -16,6 +16,12 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.EncoderType;
+
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -30,6 +36,11 @@ public class Robot extends TimedRobot {
   public static UsbCamera camera3;
   public static MjpegServer cameraswitch;
   public static Boolean switchingCameras = true;
+
+  private static final int deviceID = 0;
+  private CANSparkMax m_motor;
+  private CANEncoder m_encoder;
+ 
 
   /**
    * This function is run when the robot is first started up and should be
@@ -48,6 +59,11 @@ public class Robot extends TimedRobot {
 
     cameraswitch = CameraServer.getInstance().addSwitchedCamera("camera Switch");
     cameraswitch.setSource(camera1);
+
+    m_motor = new CANSparkMax(deviceID, MotorType.kBrushed);
+    m_encoder = m_motor.getEncoder(EncoderType.kQuadrature, 4096);
+
+
   }
 
   /**

@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.SwitchCamera;
@@ -33,7 +32,6 @@ public class OI {
   private static final int BUTTON_2_JOYSTICK = 2;
   private static final int BUTTON_8_JOYSTICK = 8;
   private final Joystick driverJoystick = new Joystick(0);
-  private final XboxController manipulatorJoystick = new XboxController(1);
 
   Button switchCamera = new JoystickButton(driverJoystick, BUTTON_1_JOYSTICK);
 
@@ -46,7 +44,4 @@ public class OI {
     return driverJoystick;
   }
 
-  public XboxController getXboxController() {
-    return manipulatorJoystick;
-  }
 }
